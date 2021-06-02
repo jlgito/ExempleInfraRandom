@@ -2,10 +2,14 @@ Rename-Computer -NewName RTR-01
 
 
 # Nommer Interfaces bon
+Rename-NetAdapter -Name "Ethernet 3" -NewName "ARC-CLI"
+Sleep 10
+Rename-NetAdapter -Name "Ethernet 2" -NewName "ARC-SRV"
+Sleep 10
+Rename-NetAdapter -Name "Ethernet" -NewName "WAN"
+Sleep 10
 
-Rename-NetAdapter -Name "Ethernet" -NewName "Arc-CLI"
-Rename-NetAdapter -Name "Ethernet 2" -NewName "Arc-SRV"
-Rename-NetAdapter -Name "Ethernet 3" -NewName "WAN"
+
 # Configuration IP bon
 
 netsh int ip set ad "Arc-SRV" static 192.168.8.254/24
@@ -17,10 +21,8 @@ netsh int ip set int "ARC-CLI" for=en
 netsh int ip set int "WAN" for=en
 
 # Ajout de route(s)
-route add -p 192.168.8.0/21 192.168.255.254
+#route add -p 192.168.8.0/21 192.168.255.254
 route add -p 192.168.128.0/24 192.168.255.128
-route add -p 192.168.255.0/24 192.168.12.254
-route add -p 192.168.255.0/24 192.168.8.254
 route add -p 0.0.0.0/0 192.168.255.254
 
 
@@ -48,6 +50,12 @@ netsh.exe routing ip relay add dhcpserver 192.168.8.1
 netsh.exe routing ip relay add interface "Arc-CLI"
 netsh.exe routing ip relay set interface "Arc-CLI" min=0
 
+
+
+
+netsh.exe routing ip relay add dhcpserver 192.168.8.1
+netsh.exe routing ip relay add interface "Bou-LAN"
+netsh.exe routing ip relay set interface "Bou-LAN" min=0
 
 netsh.exe routing ip nat install 
 netsh.exe routing ip nat add interface name="ARC-CLI" mode=PRIVATE 
