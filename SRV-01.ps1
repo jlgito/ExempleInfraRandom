@@ -53,4 +53,3 @@ Set-DnsServerPrimaryZone  -Name 168.192.in-addr.arpa -SecureSecondaries Transfer
 # une fois que l'on est sÃ»r de son coup, on peut le passer en commentaire
 
 Restart-Computer 
-
