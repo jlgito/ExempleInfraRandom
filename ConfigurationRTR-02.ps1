@@ -2,8 +2,10 @@ Rename-Computer -NewName RTR-02
 
 
 # Nommer Interfaces
-Rename-NetAdapter -Name "Ethernet" -NewName "Bou-LAN"
-Rename-NetAdapter -Name "Ethernet 2" -NewName "WAN"
+Rename-NetAdapter -Name "Ethernet" -NewName "WAN"
+Sleep 10
+Rename-NetAdapter -Name "Ethernet 2" -NewName "Bou-LAN"
+
 
 
 # Configuration IP
