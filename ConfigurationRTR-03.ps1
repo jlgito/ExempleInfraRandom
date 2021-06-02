@@ -2,8 +2,10 @@ Rename-Computer -NewName RTR-03
 
 
 # Nommer Interfaces
+Rename-NetAdapter -Name "Ethernet 2" -NewName "External" 
+Sleep 10
 Rename-NetAdapter -Name "Ethernet" -NewName "WAN"
-Rename-NetAdapter -Name "Ethernet 2" -NewName "External"
+
 
 
 # Configuration IP
